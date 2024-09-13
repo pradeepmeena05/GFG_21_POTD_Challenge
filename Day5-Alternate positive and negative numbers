@@ -1,0 +1,52 @@
+
+class Solution {
+    void rearrange(ArrayList<Integer> arr) {
+        // code here
+         int n=arr.size();
+        ArrayList<Integer>list1=new ArrayList<>();
+        ArrayList<Integer>list2=new ArrayList<>();
+        
+        for(int val:arr)
+        {
+            if(val>=0)
+            {
+                list1.add(val);
+            }
+            else
+            {
+                list2.add(val);
+            }
+        }
+        
+        int i=0;
+        int j=0;
+        
+        ArrayList<Integer>ans=new ArrayList<>();
+        
+        while(i<list1.size() && j<list2.size())
+        {
+           ans.add(list1.get(i)); 
+           ans.add(list2.get(j));  
+           i++;
+           j++;
+        }
+        
+        
+        while(i<list1.size())
+        {
+            ans.add(list1.get(i));
+            i++;
+        }
+        
+         while(j<list2.size())
+        {
+            ans.add(list2.get(j));
+            j++;
+        }
+        
+         
+         arr.clear();  
+         
+         arr.addAll(ans);
+    }
+}
