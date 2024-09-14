@@ -1,0 +1,40 @@
+
+class Solution
+{
+    public void inorder(Node root,ArrayList<Integer>list)
+    {
+        if(root==null)
+        return;
+        
+        inorder(root.left,list);
+        list.add(root.data);
+        inorder(root.right,list);
+    }
+
+    Node bToDLL(Node root)
+    {
+	//  Your code here	
+	
+	ArrayList<Integer>list=new ArrayList<>();
+	
+	inorder(root,list);
+	
+	Node head=new Node(list.get(0));
+	Node temp=head;
+	
+	for(int i=1;i<list.size();i++)
+	{
+	    Node newnode=new Node(list.get(i));
+	    
+	     temp.right=newnode;
+	     
+	     newnode.left=temp;
+	     
+	     temp=newnode;
+	    
+	}
+
+	return head;
+	
+    }
+}
