@@ -1,0 +1,45 @@
+
+class Solution {
+    
+    public int[] computeLPS(String s)
+    {
+        int lps[]=new int[s.length()];
+        
+        lps[0]=0;
+        
+        int i=1;
+        int len=0;
+        
+        while(i<s.length())
+        {
+            if(s.charAt(i)==s.charAt(len))
+            {
+                len++;
+                lps[i]=len;
+                i++;
+            }
+           else  if(s.charAt(i)!=s.charAt(len))
+            {
+                 if(len!=0)
+                 {
+                     len=lps[len-1];
+                     
+                 }
+                 else
+                 {
+                     i++;
+                     
+                 }
+            }
+            
+        }
+        return lps;
+    }
+    int lps(String str) {
+        // code here
+        
+        int lps[]=computeLPS(str);
+        
+        return lps[lps.length-1];
+    }
+}
