@@ -1,0 +1,48 @@
+
+class Solution {
+    // Function to check whether the list is palindrome.
+    
+    public Node reverse(Node node)
+    {
+        Node curr=node;
+        Node prev=null;
+        
+        while(curr!=null)
+        {
+            Node temp=curr.next;
+            curr.next=prev;
+            prev=curr;
+            curr=temp;
+        }
+        
+        return prev;
+    }
+    boolean isPalindrome(Node head) {
+        // Your code here
+        
+        Node slow=head;
+        Node fast=head;
+        
+        while(fast!=null && fast.next!=null)
+        {
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+        
+        slow=reverse(slow);
+        
+           fast=head;
+          
+         while(slow!=null)
+         {
+             if(slow.data!=fast.data)
+             {
+                 return false;
+             }
+             slow=slow.next;
+             fast=fast.next;
+         }
+         
+         return true;
+    }
+}
