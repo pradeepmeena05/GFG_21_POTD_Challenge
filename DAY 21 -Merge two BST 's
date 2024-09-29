@@ -1,0 +1,32 @@
+
+class Solution
+{
+    //Function to return a list of integers denoting the node 
+    //values of both the BST in a sorted order.
+    
+    
+    public static void Inorder(Node root1,ArrayList<Integer>list)
+    {
+        if(root1==null)
+        return ;
+        
+        Inorder(root1.left,list);
+        list.add(root1.data);
+        Inorder(root1.right,list);
+        
+    }
+    
+    public List<Integer> merge(Node root1,Node root2)
+    {
+        // Write your code here
+        
+        ArrayList<Integer>list=new ArrayList<>();
+        
+        Inorder(root1,list);
+        Inorder(root2,list);
+        
+        Collections.sort(list);
+        return list;
+        
+    }
+}
